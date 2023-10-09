@@ -1,3 +1,8 @@
+/* This project will create a student list with a respective first name, last name, ID, and GPA.
+ * Date: 10/9/23
+ * Author: Roger Li
+ */
+
 #include <iostream>
 #include <iomanip>
 #include <vector>
