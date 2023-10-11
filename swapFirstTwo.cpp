@@ -17,12 +17,10 @@ int main () {
   cin.get();
   for (int i = 0; i < strlen(input) - 1; i++) {
     if (input[i] == ' ' && input[i+2] != ' ') {
-      cout << "found a cool space!" << endl;
       spaceIndexes.push_back(i);
     }
   }
   for (vector<int>::iterator iter = spaceIndexes.begin(); iter != (spaceIndexes.end() - 1); iter++) {
-    cout << "here's a space" << endl;
     char temp;
     temp = input[*iter+1];
     input[*iter+1] = input[*iter+2];
