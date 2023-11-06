@@ -6,37 +6,41 @@
 
 int validInput();
 int validMedia();
-void add(parent* &newparent, vector<parent*> storage);
+void search(vector<parent*> storage);
 
 using namespace std;
 
 int main() {
   vector<parent*> storage;
   // Add Function
-  if (validInput() == 1) {
-    parent* newparent = new parent();
-    if (validMedia() == 1) {
-      videogames* vg = new videogames();
+  bool running = true;
+  while (running == true) {
+    if (validInput() == 1) {
+      parent* newparent = new parent();
+      if (validMedia() == 1) {
+	videogames* vg = new videogames();
+	storage.push_back(vg);
+      }
+      else if (validMedia() == 2) {
+	
+      }
+      else if (validMedia() == 3) {
+	
+      }
     }
-    else if (validMedia() == 2) {
+    // Search Function
+    else if (validInput() == 2) {
+      search(storage);
+    }
+    // Delete function
+    else if (validInput() == 3) {
 
     }
-    else if (validMedia() == 3) {
-
-    }
-  }
-  // Search Function
-  else if (validInput() == 2) {
-
-  }
-  // Delete function
-  else if (validInput() == 3) {
-
   }
 }
 
 int validInput() {
-  cout << "What do you like to do (ADD/SEARCH/DELETE)?" << endl;
+  cout << "What do you want to do (ADD/SEARCH/DELETE)?" << endl;
   bool looping = true;
   while (looping = true) {
     char input[10];
@@ -83,6 +87,24 @@ int validMedia() {
   return -1;
 }
 
-void add(parent* &newparent, vector<parent*> storage) {
 
+void search(vector<parent*> storage) {
+  cout << "Do you want to search by year or by title?" << endl;
+  char input[20];
+  cin.get(input, 20);
+  cin.get();
+  if (strcmp(input, "year") == 0) {
+    cout << "Please enter the year of the media." << endl;
+    int intInput;
+    cin >> intInput;
+    cin.get();
+    for (vector<parent*>::iterator iter = storage.begin(); iter != storage.end(); iter++) {
+      if (intInput == (*iter)->year) {
+	cout << (*iter)->year;
+      }
+    }
+  }
+  else if (strcmp(input, "title") == 0) {
+    
+  }
 }
