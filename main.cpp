@@ -1,3 +1,8 @@
+/* This program allows user to add media (video games, music, or movie) and search or delete media by listing the year or title of the media they want to search/delete.
+ * Date: 11/8/23
+ * Author: Roger Li
+ */
+
 #include <iostream>
 #include <vector>
 #include <cstring>
@@ -151,13 +156,16 @@ void deleteMedia(vector<parent*> storage) {
   char input[50];
   cin.get(input, 50);
   cin.get();
+  // Delete with year
   if (strcmp(input, "year") == 0) {
     cout << "Please enter the year of the media." << endl;
     int intInput;
     cin >> intInput;
     cin.get();
+    int amount = 0;
     for (vector<parent*>::iterator iter = storage.begin(); iter != storage.end(); iter++) {
       if (intInput == (*iter)->year) {
+	amount++;
 	if (strcmp((*iter)->type, "videogame") == 0) {
 	  (*iter)->printVideoGames();
 	}
@@ -167,31 +175,40 @@ void deleteMedia(vector<parent*> storage) {
 	else if (strcmp((*iter)->type, "movie") == 0) {
 	  (*iter)->printMovies();
 	}
-      }
-    }
-    cout << "Are you sure you want to delete these items? (y/n)" << endl;
-    char yesNo;
-    cin >> yesNo;
-    cin.get();
-    if (yesNo == 'y' || yesNo == 'Y') {
-      for (vector<parent*>::iterator iter = storage.begin(); iter != storage.end(); iter++) {
-	if (intInput == (*iter)->year) {
+	if (amount != 0) {
+	  cout << "Are you sure you want to delete this item? (y/n)" << endl;
+	}
+	else if (amount == 0) {
+	  cout << "There are no items to delete in this year!" << endl;
+	  return;
+	}
+	char yesNo;
+	cin >> yesNo;
+	cin.get();
+	if (yesNo == 'y' || yesNo == 'Y') {
 	  delete *iter;
 	  storage.erase(iter);
+	  return;
+        }
+	else if (yesNo == 'n' || yesNo == 'N') {
+	    
 	}
       }
     }
+    
   }
   
 
-  
+  // Delete with title
   else if (strcmp(input, "title") == 0) {
     cout << "Please enter the title of the media." << endl;
-    char input[50];
-    cin.get(input, 50);
+    char inputTitle[50];
+    cin.get(inputTitle, 50);
     cin.get();
+    int amount = 0;
     for (vector<parent*>::iterator iter = storage.begin(); iter != storage.end(); iter++) {
-      if (strcmp((*iter)->title, input) == 0) {
+      if (strcmp((*iter)->title, inputTitle) == 0)
+	amount++;
 	if (strcmp((*iter)->type, "videogame") == 0) {
 	  (*iter)->printVideoGames();
 	}
@@ -201,19 +218,24 @@ void deleteMedia(vector<parent*> storage) {
 	else if (strcmp((*iter)->type, "movie") == 0) {
 	  (*iter)->printMovies();
 	}
-      }
-    }
-    cout << "Are you sure you want to delete these items? (y/n)" << endl;
-    char yesNo;
-    cin >> yesNo;
-    cin.get();
-    if (yesNo == 'y' || yesNo == 'Y') {
-      for (vector<parent*>::iterator iter = storage.begin(); iter != storage.end(); iter++) {
-        if (strcmp((*iter)->title, input) == 0) {
+	if (amount != 0) {
+	  cout << "Are you sure you want to delete this item? (y/n)" << endl;
+	}
+	else if (amount == 0) {
+	  cout << "There are no items to delete in this year!" << endl;
+	  return;
+	}
+	char yesNo;
+	cin >> yesNo;
+	cin.get();
+	if (yesNo == 'y' || yesNo == 'Y') {
 	  delete *iter;
 	  storage.erase(iter);
+	  return;
+        }
+	else if (yesNo == 'n' || yesNo == 'N') {
+	    
 	}
-      } 
     }
   }
 }
