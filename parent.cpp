@@ -10,6 +10,7 @@ parent::parent() {
   
 }
 
+// Parent functions
 char* parent::getTitle() {
   return title;
 }

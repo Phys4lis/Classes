@@ -4,7 +4,9 @@
 using namespace std;
 
 movies::movies() {
+  // Change type to movie
   strcpy(type, "movie");
+  // Prompt user for information about the movie
   cout << "Please enter a title." << endl;
   char input1[50];
   cin.get(input1, 50);
@@ -32,6 +34,7 @@ movies::movies() {
   rating = intInput5;
 }
 
+// Movie functions
 char* movies::getDirector() {
   return director;
 }

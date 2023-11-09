@@ -5,6 +5,7 @@ using namespace std;
 class movies : public parent {
  public:
   movies();
+  // Variables and functions used in movies.cpp
   char director[50];
   char duration[50];
   int rating;

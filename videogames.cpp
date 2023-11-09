@@ -4,7 +4,9 @@
 using namespace std;
 
 videogames::videogames() {
+  // Change type to video game
   strcpy(type, "videogame");
+  // Prompt user for information about the video game
   cout << "Please enter a title." << endl;
   char input1[50];
   cin.get(input1, 50);
@@ -27,6 +29,7 @@ videogames::videogames() {
   rating = intInput4;
 }
 
+// Video game functions
 char* videogames::getPublisher() {
   return publisher;
 }

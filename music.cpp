@@ -4,7 +4,9 @@
 using namespace std;
 
 music::music() {
+  // Change type to music
   strcpy(type, "music");
+  // Prompt user for information about the music
   cout << "Please enter a title." << endl;
   char input1[50];
   cin.get(input1, 50);
@@ -27,6 +29,7 @@ music::music() {
   strcpy(duration, input4);
 }
 
+// Music functions
 char* music::getPublisher() {
   return publisher;
 }
